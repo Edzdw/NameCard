@@ -1,0 +1,30 @@
+/* ---------- RESET & VARIABLES ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+:root {
+  --primary: #0077ff;
+  --text: #222;
+  --muted: #555;
+  --bg: #f5f6f8;
+  --white: #fff;
+  --shadow: 0 2px 8px rgba(0,0,0,.08);
+  --card-bg: #fff;
+}
+
+/* Dark mode override */
+body.dark {
+  --bg: #0f172a;       /* slate-900 */
+  --text: #e5e7eb;     /* gray-200 */
+  --muted: #9ca3af;    /* gray-400 */
+  --card-bg: #1e293b;  /* slate-800 */
+  --primary: #60a5fa;  /* blue-400 */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
+}
