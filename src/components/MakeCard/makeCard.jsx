@@ -35,8 +35,35 @@ const MakeCard = () => {
     const card = document.querySelector(".preview-card"); // chọn element
     if (!card) return;
 
-    const canvas = await html2canvas(card);
-    const dataURL = canvas.toDataURL("image/png");
+    // lưu các style
+// const oldStyles = {
+//   background: card.style.background,
+//   color: card.style.color,
+// };
+
+// // override tạm thời
+// card.style.background = "#fff";
+// card.style.color = "#000";
+
+// // nếu có overlay, shadow, filter, disable tạm
+// const overlays = card.querySelectorAll("*");
+// overlays.forEach(el => {
+//   el.dataset.oldStyle = el.style.cssText; // lưu lại
+//   el.style.filter = "none";
+//   el.style.background = el.style.backgroundColor || "#fff";
+//   el.style.color = el.style.color || "#000";
+//   el.style.boxShadow = "none";
+//   el.style.textShadow = "none";
+// });
+
+// render
+const canvas = await html2canvas(card, { useCORS: true });
+const dataURL = canvas.toDataURL("image/png");
+
+// // restore lại style cũ
+// card.style.background = oldStyles.background;
+// card.style.color = oldStyles.color;
+// overlays.forEach(el => el.style.cssText = el.dataset.oldStyle);
 
     const link = document.createElement("a");
     link.href = dataURL;
