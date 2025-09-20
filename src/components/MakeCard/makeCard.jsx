@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import html2canvas from "html2canvas";
 import "./makecard.css"
 
 
-const MakeCard = () => {
+const MakeCard = ({selectedTemplate}) => {
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -14,10 +14,18 @@ const MakeCard = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [qrValue, setQrValue] = useState("");
   const COMPANY_EMAIL = "dungbede@gmail.com";
+
+  
   // Tạo 20 template từ picsum
   const templates = Array.from({ length: 20 }, (_, i) =>
     `/templates/template${i+1}.JPG`
   );
+
+  
+  // Khi banner click template => update selected image
+  useEffect(() => {
+    setSelectedImage(selectedTemplate);
+  }, [selectedTemplate]);
 
   const handleChange = (e) => {
     const newForm = { ...form, [e.target.name]: e.target.value };
@@ -35,7 +43,7 @@ const MakeCard = () => {
     const card = document.querySelector(".preview-card"); // chọn element
     if (!card) return;
 
-    // lưu các style
+// lưu các style
 // const oldStyles = {
 //   background: card.style.background,
 //   color: card.style.color,
@@ -140,21 +148,22 @@ const dataURL = canvas.toDataURL("image/png");
             </div>
 
             {/* Template buttons */}
-            <div className="template-buttons">
-              <h4>Chọn mẫu</h4>
-              <div className="btn-list">
-                {templates.map((img, idx) => (
-                  <button
-                    type="button"
-                    key={idx}
-                    className={selectedImage === img ? "active" : ""}
-                    onClick={() => setSelectedImage(img)}
-                  >
-                    Mẫu {idx + 1}
-                  </button>
-                ))}
+              <div className="template-select">
+                <label htmlFor="template">Chọn mẫu:</label>
+                <select
+                  id="template"
+                  value={selectedImage || ""}
+                  onChange={(e) => setSelectedImage(e.target.value)}
+                >
+                  <option value="" disabled>-- Chọn mẫu --</option>
+                  {templates.map((img, idx) => (
+                    <option key={idx} value={img}>
+                      Mẫu {idx + 1}
+                    </option>
+                  ))}
+                </select>
               </div>
-            </div>
+
 
             {/* Download button */}
             <div className="download-btn">

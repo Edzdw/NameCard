@@ -27,7 +27,7 @@ export default function Header() {
   }, [dark]);
 
   return (
-    <header>
+    <header className="header">
       <div className="logo">LOGO</div>
       {/* <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
         <a href="#">Mẫu danh thiếp</a>

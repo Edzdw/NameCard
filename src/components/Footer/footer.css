@@ -1,8 +1,8 @@
 .site-footer {
   background: #0f172a;
   color: #e5e7eb;
-  padding: 32px 20px;
   text-align: center;
+  flex: 0 0 50px; /* hoặc height: 50px */
 }
 .footer-logo {
   font-weight: 800;

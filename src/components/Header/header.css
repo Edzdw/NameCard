@@ -8,6 +8,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex: 0 0 60px;  /* hoặc height: 60px */
 }
 
 .logo {

@@ -1,4 +1,4 @@
-.make-card { padding: 20px; color: var(--text); }
+.make-card { padding: 20px; color: var(--text); font-family: "Montserrat", sans-serif;}
 .make-card h2 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -12,7 +12,7 @@
   flex: 1;
   min-width: 300px;
   background: var(--card-bg);
-  padding: 24px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: var(--shadow);
 }
@@ -97,30 +97,32 @@
 .card-overlay h4 { font-size: 1.2rem; margin: 0 0 6px; }
 .card-overlay p { font-size: 0.9rem; margin: 0; }
 
-/* template buttons */
-.template-buttons { margin-top: 20px; }
-.template-buttons h4 {
-  margin-bottom: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
+/* Template label */
+.template-select {
+  margin-top: 15px;
+  text-align: center;
 }
-.btn-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.btn-list button {
-  background: #eee;
-  border: 1px solid #ccc;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all .2s;
+
+.template-select label {
   font-weight: 600;
+  margin-right: 10px;
 }
-.btn-list button:hover, .btn-list button.active {
-  background: var(--primary);
-  color: #fff;
+
+.template-select select {
+  padding: 8px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #fff;
+  min-width: 150px;
+  transition: all 0.2s;
+}
+
+.template-select select:hover {
   border-color: var(--primary);
 }
+
 
 /* download */
 .download-btn { margin-top: 20px; text-align: center; }
@@ -192,4 +194,32 @@
   font-size: 20px;
   cursor: pointer;
   color: var(--text)
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .make-card h2{
+    font-size: 24px;
+  }
+
+  .make-card-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .make-card .left,
+  .make-card .right {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .preview-area {
+    padding: 12px;
+  }
+
+  .card-overlay {
+    display: none;
+  }
+  .qr-box { max-width: 120px; font-size: 10px; }
+  .template-select select { width: 100%; max-width: 100%; }
 }
