@@ -18,7 +18,7 @@ const MakeCard = ({selectedTemplate}) => {
   
   // Tạo 20 template từ picsum
   const templates = Array.from({ length: 20 }, (_, i) =>
-    `/templates/template${i+1}.JPG`
+    `/templates/template${i+1}.jpg`
   );
 
   

@@ -4,7 +4,7 @@ import "./banner.css"
 export default function Banner({ onImageClick }) {
   // Template image Sẵn có 
   const templates = Array.from({length:10}, (_,i) =>
-     `/templates/template${i+ 1}.JPG`
+     `/templates/template${i+ 1}.jpg`
   );
 
   // mảng marquee ( có thể lặp lại templates)
