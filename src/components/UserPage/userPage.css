@@ -1,0 +1,97 @@
+.userpage {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #f5f6f8;
+  min-height: 100vh;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  padding: 24px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Avatar */
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+/* Name */
+.username {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Info list */
+.info-list {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #333;
+}
+.info-item .icon {
+  font-size: 18px;
+}
+
+/* CTA */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn.call {
+  background: #0077ff;
+  box-shadow: 0 4px 10px rgba(0,119,255,0.25);
+}
+.btn.call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,119,255,0.35);
+}
+.btn.email {
+  background: #22c55e;
+  box-shadow: 0 4px 10px rgba(34,197,94,0.25);
+}
+.btn.email:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34,197,94,0.35);
+}

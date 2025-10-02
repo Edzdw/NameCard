@@ -1,25 +1,8 @@
 import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
-export default function FormOffline() {
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: ""
-  });
+export default function FormOffline({form,  handleChange}) {
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  // Chuẩn bị vCard string
-  const vcardData = `BEGIN:VCARD
-VERSION:3.0
-N:;${form.name};;;
-FN:${form.name}
-TEL:${form.phone}
-EMAIL:${form.email}
-END:VCARD`;
 
   return (
       <form className="info-form" onSubmit={(e) => e.preventDefault()}>

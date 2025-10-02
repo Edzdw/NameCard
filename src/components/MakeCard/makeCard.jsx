@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
+import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import { HexColorPicker } from "react-colorful";
 import FormOffline from "./formOffline";
 import FormOnline from "./formOnline";
@@ -44,6 +44,25 @@ const MakeCard = ({selectedTemplate}) => {
     setForm(newForm);
   };
 
+  // Sinh QR value tùy theo mode
+useEffect(() => {
+  if (qrMode === "offline") {
+    // QR offline → vCard
+    const vcardData = `BEGIN:VCARD
+VERSION:3.0
+N:;${form.name};;;
+FN:${form.name}
+TEL:${form.phone}
+EMAIL:${form.email}
+END:VCARD`;
+    setQrValue(vcardData);
+  } else {
+    // QR online → link ngắn (sẽ thay bằng backend sau này)
+    const shortLink = `https://mycard.app/u/${btoa(form.phone || "guest")}`;
+    setQrValue(shortLink);
+  }
+}, [qrMode, form]);
+
 
   // Hàm tải card về PNG
   const downloadCard = async () => {
@@ -73,7 +92,7 @@ const dataURL = canvas.toDataURL("image/png");
                   {qrMode === "offline" ? (
                     <FormOffline form={form} handleChange={handleChange} />
                   ) : (
-                    <FormOnline onlineForm={onlineForm} setOnlineForm={setOnlineForm} />
+                    <FormOnline setQrValue={setQrValue} />
                   )}
               </div>
 
@@ -103,7 +122,7 @@ const dataURL = canvas.toDataURL("image/png");
           {/* Preview bên phải */}
             <div className="right">
               <div className="preview-area">
-                <h3>Preview Namecard</h3>
+                <h3>Xem trước Namecard</h3>
                 <div className="preview-card">
                   {selectedImage && (
                     <img
@@ -124,7 +143,7 @@ const dataURL = canvas.toDataURL("image/png");
                   {/* QR code */}
                   <div className="qr-box">
                     {qrValue ? (
-                      <QRCodeCanvas value={qrValue} size={160} />
+                      <QRCodeSVG value={qrValue} size={140} />
                     ) : (
                       <span className="qr-placeholder">QR sẽ hiển thị ở đây</span>
                     )}
@@ -163,11 +182,11 @@ const dataURL = canvas.toDataURL("image/png");
                     ngay.
                   </p>
                   <div className="contact-actions">
-                    <a href="tel:0123456789" className="btn cta">
-                      Gọi: 0123 456 789
+                    <a href="tel:0563333851" className="btn cta">
+                      Gọi: Anh Dũng
                     </a>
                     <a href="mailto:hello@yourbrand.com" className="btn ghost">
-                      Email: hello@yourbrand.com
+                      Email: Dungtaiphiet@gmail.com
                     </a>
                   </div>
                 </div>
